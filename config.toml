@@ -1,0 +1,142 @@
+baseurl = "/"
+languageCode = "fr-fr"
+title = "Christophe Ducamp"
+theme = "Strata"
+disqusShortname = "xtof"
+# Enable Google Analytics by inserting your tracking code
+googleAnalytics = ""
+# Définit combien de post doivent apparaitre sur le site
+paginate = 10
+
+[params]
+	# To provide some metadata for search engines feel free to add a few
+    # information about you and your website.
+	name = "Christophe Ducamp"
+	description = "Site personnel de christophe ducamp (paris)"
+
+	# Format dates with Go's time formatting
+	date_format = "2006-01-02"
+
+	# Add custom assets with their paths relative to the static folder
+	custom_js   = []
+	custom_css  = []
+
+
+	[params.sidebar]
+		# Replace the avatar with a picture of your own under static/images
+		avatar = "avatar.jpg"
+		# Use Markdown to format the string. This works nearly all over the theme
+		bio = "**Salut c'est tof**, poète à Paris."
+		# The icons will be shown if you enter your username
+		twitter = "xtof_party"
+		github = "ChristopheDucamp"
+		gitlab = ""
+		dribbble = ""
+		facebook = "christophe.ducamp"
+		googleplus = ""
+		flickr = "christopheducamp"
+		linkedin = "christopheducamp"
+
+		copyright = [
+			"&copy; tof",
+			"Design : [HTML5 UP](//html5up.net)",
+			"Images démo: [Unsplash](//unsplash.com/)"
+		]
+
+
+	[params.about]
+		hide  = false
+		title = "Christophe Ducamp"
+		content = "Recherche et explorations autour du Design Social."
+
+
+	[params.portfolio]
+		hide  = false
+		title = "100 Days of Photos"
+
+		# The images and thumbnails are stored under static/images
+		# Create and change subfolders as you like
+		[[params.portfolio.gallery]]
+			image = "fulls/01.jpg"
+			thumb = "thumbs/01.jpg"
+			title = "Lorem ipsum dolor."
+			description = "Lorem ipsum dolor sit amet."
+
+		[[params.portfolio.gallery]]
+			image = "fulls/02.jpg"
+			thumb = "thumbs/02.jpg"
+			title = "Lorem ipsum dolor."
+			description = "Lorem ipsum dolor sit amet."
+
+		[[params.portfolio.gallery]]
+			image = "fulls/03.jpg"
+			thumb = "thumbs/03.jpg"
+			title = "Lorem ipsum dolor."
+			description = "Lorem ipsum dolor sit amet."
+
+		[[params.portfolio.gallery]]
+			image = "fulls/04.jpg"
+			thumb = "thumbs/04.jpg"
+			title = "Lorem ipsum dolor."
+			description = "Lorem ipsum dolor sit amet."
+
+		[[params.portfolio.gallery]]
+			image = "fulls/05.jpg"
+			thumb = "thumbs/05.jpg"
+			title = "Lorem ipsum dolor."
+			description = "Lorem ipsum dolor sit amet."
+
+		[[params.portfolio.gallery]]
+			image = "fulls/06.jpg"
+			thumb = "thumbs/06.jpg"
+			title = "Lorem ipsum dolor."
+			description = "Lorem ipsum dolor sit amet."
+
+	[params.recentposts]
+		hide  = false
+		title = "Derniers posts"
+
+	[params.contact]
+		hide  = false
+		title = "Get in touch"
+		content = "Accumsan pellentesque commodo blandit enim arcu non at amet id arcu magna. Accumsan orci faucibus id eu lorem semper nunc nisi lorem vulputate lorem neque lorem ipsum dolor."
+
+		address = [
+			"1 rue des Poissonniers.",
+			"Paris",
+			"France"
+		]
+		phone = "+33-632-039 796"
+
+		# Since this template is static, the contact form uses www.formspree.io as a
+		# proxy. The form makes a POST request to their servers to send the actual
+		# email. Visitors can send up to a 1000 emails each month for free.
+	    #
+	    # What you need to do for the setup?
+	    #
+	    # - set your email address under 'email' below
+	    # - upload the generated site to your server
+	    # - send a dummy email yourself to confirm your account
+	    # - click the confirm link in the email from www.formspree.io
+	    # - you're done. Happy mailing!
+		email = "christophe@ducamp.me"
+
+		[params.contact.form]
+			# Set custom strings for the form if your native
+			# language isn't English
+			name = "Christophe Ducamp"
+			email = "christophe@ducamp.me"
+			message = "Déposez-moi ici votre message"
+			submit = "Presser pour envoyer le message"
+
+
+# Menu links that appear on the left sidebar
+[[menu.main]]
+	name = "Accueil"
+	url  = "/"
+	weight = 2
+
+[[menu.main]]
+	name = "Blog"
+	url  = "post/"
+	weight = 10
