@@ -1,5 +1,5 @@
 ---
-date: 2014-03-10
+date: 2017-03-10
 linktitle: Migrer en provenance de Jekyll
 menu:
   main:
@@ -10,7 +10,7 @@ weight: 10
 ---
 
 ## Migrer le contenu statique vers `static`
-Il y a une règle dans Jekyll faisant que tout répertoire ne démarrant pas par un `_` sera copié comme tel vers l'output du `_site`. Hugo conserve tout le contenu statique sous `static`. Vous devriez par conséquent migrer tout là-bas.
+Il y a une règle dans Jekyll qui fait que tout répertoire ne démarrant pas par un `_` sera copié comme tel vers l'output du `_site`. Hugo conserve tout le contenu statique sous `static`. Vous devriez par conséquent migrer tout là-bas.
 Avec Jekyll, quelque chose qui ressemblait à 
 
     ▾ <root>/
@@ -56,7 +56,7 @@ Pour information, la conversion de mes templates pour [heyitsalex.net](http://he
 Jekyll a des [plugins](http://jekyllrb.com/docs/plugins/) ; Hugo a des [shortcodes](/doc/shortcodes/). It's fairly trivial to do a port.
 
 ### Implémentation
-As an example, I was using a custom [`image_tag`](https://github.com/alexandre-normand/alexandre-normand/blob/74bb12036a71334fdb7dba84e073382fc06908ec/_plugins/image_tag.rb) plugin to generate figures with caption when running Jekyll. As I read about shortcodes, I found Hugo had a nice built-in shortcode that does exactly the same thing.
+Par exemple, j'utilise un plugin personnalisé [`image_tag`](https://github.com/alexandre-normand/alexandre-normand/blob/74bb12036a71334fdb7dba84e073382fc06908ec/_plugins/image_tag.rb) pour générer des chiffres avec la légende lors de l'exécution de Jekyll. Comme je l'ai lu sur les shortcodes, j'ai trouvé que Hugo avait un bon code intégré qui fait exactement la même chose.
 
 Le plugin de Jekyll :
 
@@ -114,7 +114,7 @@ Le plugin de Jekyll :
     end
     Liquid::Template.register_tag('image', Jekyll::ImageTag)
 
-is written as this Hugo shortcode:
+est écrit comme ce shortcode Hugo :
 
     <!-- image -->
     <figure {{ with .Get "class" }}class="{{.}}"{{ end }}>
@@ -136,22 +136,23 @@ is written as this Hugo shortcode:
     <!-- image -->
 
 ### Usage
-I simply changed:
+J'ai simplement changé : 
 
     {% image full http://farm5.staticflickr.com/4136/4829260124_57712e570a_o_d.jpg "One of my favorite touristy-type photos. I secretly waited for the good light while we were "having fun" and took this. Only regret: a stupid pole in the top-left corner of the frame I had to clumsily get rid of at post-processing." ->http://www.flickr.com/photos/alexnormand/4829260124/in/set-72157624547713078/ %}
 
-to this (this example uses a slightly extended version named `fig`, different than the built-in `figure`):
+en ça (cet exemple utilise une version légèrement augmentée appelée `fig`, différente du `figure` intégré) :
 
     {{%/* fig class="full" src="http://farm5.staticflickr.com/4136/4829260124_57712e570a_o_d.jpg" title="One of my favorite touristy-type photos. I secretly waited for the good light while we were having fun and took this. Only regret: a stupid pole in the top-left corner of the frame I had to clumsily get rid of at post-processing." link="http://www.flickr.com/photos/alexnormand/4829260124/in/set-72157624547713078/" */%}}
 
-As a bonus, the shortcode named parameters are, arguably, more readable.
+En bonus, le shortcode appelé parameter est plus lisible.
 
 ## Touches Finales
 ### Réparer le contenu
-Depending on the amount of customization that was done with each post with Jekyll, this step will require more or less effort. There are no hard and fast rules here except that `hugo server --watch` is your friend. Test your changes and fix errors as needed.
+
+Selon la quantité de personnalisation effectuée avec chaque publication dans Jekyll, cette étape nécessitera plus ou moins d'efforts. Il n'y a pas de règles rigoureuses ici, si ce n'est que `hugo server --watch` est votre ami. Testez vos modifications et corrigez les erreurs au besoin.
 
 ### Nettoyage
-You'll want to remove the Jekyll configuration at this point. If you have anything else that isn't used, delete it.
+Vous voudrez supprimer la configuration de Jekyll à ce stade. Si vous avez autre chose qui n'est pas utilisé, supprimez-le.
 
 ## Un exemple pratique dans une diff
-[Hey, it's Alex](http://heyitsalex.net/) was migrated in less than a _father-with-kids day_ from Jekyll to Hugo. You can see all the changes (and screw-ups) by looking at this [diff](https://github.com/alexandre-normand/alexandre-normand/compare/869d69435bd2665c3fbf5b5c78d4c22759d7613a...b7f6605b1265e83b4b81495423294208cc74d610).
+[Hey, it's Alex](http://heyitsalex.net/) a été migré de Jekyll vers Hugo en moins d' _une-journée-de-papa-avec-enfants_. Vous pouvez voir toutes les modifications (et réglages) en regardant cette [diff](https://github.com/alexandre-normand/alexandre-normand/compare/869d69435bd2665c3fbf5b5c78d4c22759d7613a...b7f6605b1265e83b4b81495423294208cc74d610).

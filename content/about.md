@@ -6,8 +6,7 @@ menu = "main"
 
 Hugo est un générateur de site statique écrit en Go.
 
-
-Il fait usage d'une diversité de projets open source parmi lesquels : 
+Il fait usage d'une diversité de projets open-source parmi lesquels : 
 
 * [Cobra](https://github.com/spf13/cobra)
 * [Viper](https://github.com/spf13/viper)

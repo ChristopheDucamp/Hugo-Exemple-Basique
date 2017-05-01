@@ -253,7 +253,7 @@ params:
   SidebarRecentLimit: 5
 ```
 
-Dans un layout de footer, vous pourriezn alors déclarer un  `<footer>` qui est uniquement fourni si le paramètre  `CopyrightHTML` est fourni, et s'il est donné, vous le déclareriez comme étant HTML-safe, de manière à ce que l'entité HTML ne soit pas échappée. Ceci vous permettrait de mettre à jour aisément votre fichier de configuration au niveau le plus haut à chaque premier janvier, au lieu de chasser dans vos templates.
+Dans un layout de footer, vous pourriez alors déclarer un  `<footer>` qui est uniquement fourni si le paramètre  `CopyrightHTML` est fourni, et s'il est donné, vous le déclareriez comme étant HTML-safe, de manière à ce que l'entité HTML ne soit pas échappée. Ceci vous permettrait de mettre à jour aisément votre fichier de configuration au niveau le plus haut à chaque premier janvier, au lieu de chasser dans vos templates.
 
 ```
 {{if .Site.Params.CopyrightHTML}}<footer>
@@ -261,7 +261,7 @@ Dans un layout de footer, vous pourriezn alors déclarer un  `<footer>` qui est 
 </footer>{{end}}
 ```
 
-An alternative way of writing the "if" and then referencing the same value is to use "with" instead. With rebinds the context `.` within its scope, and skips the block if the variable is absent:
+Une autre façon d'écrire le "if", puis de référencer la même valeur est d'utiliser "with" à la place. Avec le nouveau contexte  `.` dans sa portée, il ignore le bloc si la variable est absente :
 
 ```
 {{with .Site.Params.TwitterUser}}<span class="twitter">
@@ -271,11 +271,11 @@ An alternative way of writing the "if" and then referencing the same value is to
 </span>{{end}}
 ```
 
-Finally, if you want to pull "magic constants" out of your layouts, you can do so, such as in this example:
+Enfin, si vous souhaitez extraire des "constantes magiques" de vos mises en page, vous pouvez le faire, comme dans cet exemple :
 
 ```
 <nav class="recent">
-  <h1>Recent Posts</h1>
+  <h1>Posts Récents</h1>
   <ul>{{range first .Site.Params.SidebarRecentLimit .Site.Recent}}
     <li><a href="{{.RelPermalink}}">{{.Title}}</a></li>
   {{end}}</ul>

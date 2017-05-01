@@ -73,7 +73,7 @@ La page d'accueil ou la landing page, est la première page que voient beaucoup 
 
 ### Le Fichier de Configuration du Site
 
-Qquand Hugo tourne, il cherche un fichier de configuration qui contient les réglages qui écrasent les valeurs par défaut du site tout entier. Le fichier peut utiliser TOML, YAML, ou JSON. Je préfére utiliser TOML pour mes fichiers de configuration. Si vous préférez utiliser JSON ou YAML, vous devrez traduire mes exemples. Vous devrez aussi changer le nom du fichier parce que Hugo utilise l'extension pour déterminer comme la traiter.
+Quand Hugo tourne, il cherche un fichier de configuration qui contient les réglages qui écrasent les valeurs par défaut du site tout entier. Le fichier peut utiliser TOML, YAML, ou JSON. Je préfére utiliser TOML pour mes fichiers de configuration. Si vous préférez utiliser JSON ou YAML, vous devrez traduire mes exemples. Vous devrez aussi changer le nom du fichier parce que Hugo utilise l'extension pour déterminer comme la traiter.
 
 Hugo traduit les fichirs Markdown files en HTML. Par défaut, Hugo s'attend à trouver des fichiers Markdown dans votre répertoire ```content/``` et des fichiers templates dans votre répertoire ```themes/```. Il créera des fichirs HTML dans votre répertoire  ```public/```. Vous pouvez modifier cela en spécifiant des endroits alternatifs dans le fichier de configuration.
 
@@ -114,15 +114,13 @@ Le modèle de la page d'accueil est un type spécial de modèle de liste. Hugo s
 
 #### Template Partiel
 
-A partial template is a template that can be included in other templates. Partial templates must be called using the “partial” template command. They are very handy for rolling up common behavior. For example, your site may have a banner that all pages use. Instead of copying the text of the banner into every single and list template, you could create a partial with the banner in it. That way if you decide to change the banner, you only have to change the partial template.
-
-Un Template partiel est un template qui peut être inclus dans d'autres modèles. Les templates partiels doivent être appelés en utilisant la commande de tempalte "partial". Ils sont très utiles pour faire progresser le comportement commun. Par exemple, votre site peut avoir une bannière que toutes les pages utilisent. Au lieu de copier le texte de la bannière dans chaque template de liste, vous pouvez créer un partiel avec la bannière. De cette façon, si vous décidez de modifier la bannière, il vous suffit de changer le template partiel.
+Un Template partiel est un template qui peut être inclus dans d'autres templates. Les templates partiels doivent être appelés en utilisant la commande de template "partial". Ils sont très utiles pour faire progresser le comportement commun. Par exemple, votre site peut avoir une bannière que toutes les pages utilisent. Au lieu de copier le texte de la bannière dans chaque template de liste, vous pouvez créer un partiel avec la bannière. De cette façon, si vous décidez de modifier la bannière, il vous suffit de changer le template partiel.
 
 ## Créer un Nouveau Site
 
 Utilisons Hugo pour créer un nouveau site web. Je suis un utilisateur Mac, donc je vais créer le mien dans mon répertoire personnel, dans le dossier Sites. Si vous utilisez Linux, vous devrez d'abord créer le dossier.
 
-La commande "new site" créera un squelette d'un site. Il vous donnera la structure du répertoire de base et un fichier de configuration utilisable.
+La commande "new site" créera un squelette d'un site. Elle vous donnera la structure du répertoire de base et un fichier de configuration utilisable.
 
 ```
 $ hugo new site ~/Sites/zafta
@@ -220,35 +218,34 @@ index.xml
 sitemap.xml
 ```
 
-That's a listing of your public/ directory. Hugo didn't create a home page because our site has no content. When there's no index.html file in a directory, the server lists the files in the directory, which is what you should see in your browser.
+C'est une liste de votre répertoire public/. Hugo n'a pas créé de page d'accueil parce que notre site n'a pas de contenu. Quand il n'y a pas de fichier index.html dans un répertoire, le serveur liste les fichiers dans le répertoire, ce qui est ce que vous devriez observer dans votre navigateur.
 
-Let’s go back and look at those warnings again.
+Revenons en arrière et regardons de nouveau ces messages d'avertissement.
 
 ```
 WARN: 2014/09/29 Unable to locate layout: [index.html _default/list.html _default/single.html]
 WARN: 2014/09/29 Unable to locate layout: [404.html]
 ```
 
-That second warning is easier to explain. We haven’t created a template to be used to generate “page not found errors.” The 404 message is a topic for a separate tutorial.
+Ce second message d'avertissement est plus facile à expliquer. Nous n'avons pas créé de template à utiliser pour générer “page not found errors.” Le message 404 est un sujet pour un tutoriel à part.
 
-Now for the first warning. It is for the home page. You can tell because the first layout that it looked for was “index.html.” That’s only used by the home page.
+Maintenant pour le premier avertissement. Il concerne la page d'accueil. Vous pouvez dire parce que le premier layout qu'il cherchait était “index.html.” Ceci est uniquement utilisé pour la page d'accueil.
 
-I like that the verbose flag causes Hugo to list the files that it's searching for. For the home page, they are index.html, _default/list.html, and _default/single.html. There are some rules that we'll cover later that explain the names and paths. For now, just remember that Hugo couldn't find a template for the home page and it told you so.
+J'aime que le marquage détaillé amène Hugo à la liste des fichiers qu'il recherche. Pour la page d'accueil, ce sont index.html, _default/list.html et _default/single.html. Il y a quelques règles que nous aborderons plus loin qui expliquent les noms et les chemins. Pour l'instant, n'oubliez pas que Hugo n'a pas pu trouver un modèle pour la page d'accueil et il vous l'a dit.
 
-At this point, you've got a working installation and site that we can build upon. All that’s left is to add some content and a theme to display it.
+À ce stade, vous avez une installation de travail et un site sur lequel nous pouvons tirer parti. Tout ce qui reste c'est d'ajouter du contenu et un thème pour l'afficher.
 
 ## Créer un Nouveau Thème
 
-Hugo doesn't ship with a default theme. There are a few available (I counted a dozen when I first installed Hugo) and Hugo comes with a command to create new themes.
+Hugo n'est pas livré avec un thème par défaut. Il y en a quelques -uns de disponibles (j'en ai compté une douzaine lorsque j'ai installé Hugo pour la première fois) et Hugo est livré avec la commande pour créer de nouveaux thèmes.
 
-We're going to create a new theme called "zafta." Since the goal of this tutorial is to show you how to fill out the files to pull in your content, the theme will not contain any CSS. In other words, ugly but functional.
+Nous allons créer un nouveau thème appelé "zafta". Étant donné que le but de ce didacticiel est de vous montrer comment remplir les fichiers pour extraire votre contenu, le thème ne contiendra aucune CSS. En d'autres termes, moche mais fonctionnel.
 
-All themes have opinions on content and layout. For example, Zafta uses "post" over "blog". Strong opinions make for simpler templates but differing opinions make it tougher to use themes. When you build a theme, consider using the terms that other themes do.
-
+Tous les thèmes ont des opinions sur le contenu et la mise en page. Par exemple, Zafta utilise "post" sur "blog". Les opinions fortes font que des modèles plus simples, mais des opinions différentes rendent plus difficile l'utilisation de thèmes. Lorsque vous construisez un thème, envisagez d'utiliser les termes utilisés par d'autres thèmes.
 
 ### Créer un Squelette
 
-Use the hugo "new" command to create the skeleton of a theme. This creates the directory structure and places empty files for you to fill out.
+Utilisez la commande "new" de hugo pour créer le squelette d'un thème. Cela crée la structure du répertoire et place les fichiers vides à remplir.
 
 ```
 $ hugo new theme zafta
@@ -275,9 +272,9 @@ $ find themes -type f | xargs ls -l
 $ 
 ```
 
-The skeleton includes templates (the files ending in .html), license file, a description of your theme (the theme.toml file), and an empty archetype.
+Le squelette contient des templates (les fichiers se terminant par .html), un fichier de licence, une description de votre thème (le fichier theme.toml) et un archétype vide.
 
-Please take a minute to fill out the theme.toml and LICENSE.md files. They're optional, but if you're going to be distributing your theme, it tells the world who to praise (or blame). It's also nice to declare the license so that people will know how they can use the theme.
+Prenez une minute pour remplir les fichiers theme.toml et LICENSE.md. Ils sont facultatifs, mais si vous comptez distribuer votre thème, il dit au monde qui louer (ou blâmer). Il est également agréable de déclarer la licence afin que les gens sachent comment ils peuvent utiliser le thème.
 
 ```
 $ vi themes/zafta/theme.toml
